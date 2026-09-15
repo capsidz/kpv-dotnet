@@ -1,0 +1,82 @@
+@UserManagementApi.Web_HostAddress = http://localhost:5282
+
+### регистрация пользователя
+POST http://localhost:5282/api/users/register
+Content-Type: application/json
+
+{
+  "name": "Anna",
+  "login": "anna123",
+  "email": "anna@gmail.com",
+  "password": "Test123!"
+}
+
+
+### регистрация второго пользователя
+POST http://localhost:5282/api/users/register
+Content-Type: application/json
+
+{
+  "name": "Ivan",
+  "login": "ivan123",
+  "email": "ivan@gmail.com",
+  "password": "Password1!"
+}
+
+
+### попытка зарегистрировать пользователя с существующим логином
+POST http://localhost:5282/api/users/register
+Content-Type: application/json
+
+{
+  "name": "Another Anna",
+  "login": "anna123",
+  "email": "another@gmail.com",
+  "password": "Test123!"
+}
+
+
+### авторизация с правильным паролем
+POST http://localhost:5282/api/users/login
+Content-Type: application/json
+
+{
+  "login": "anna123",
+  "password": "Test123!"
+}
+
+
+### авторизация с неправильным паролем
+POST http://localhost:5282/api/users/login
+Content-Type: application/json
+
+{
+  "login": "anna123",
+  "password": "Wrong123!"
+}
+
+
+### изменение пользователя
+PUT http://localhost:5282/api/users/1
+Content-Type: application/json
+
+{
+  "name": "Anna Updated",
+  "login": "anna_new",
+  "email": "anna_new@gmail.com"
+}
+
+
+### изменение логин на уже существующий
+PUT http://localhost:5282/api/users/1
+Content-Type: application/json
+
+{
+  "name": "Anna",
+  "login": "ivan123",
+  "email": "anna@gmail.com"
+}
+
+
+### удаление пользователя
+DELETE http://localhost:5282/api/users/1
