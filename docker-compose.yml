@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:18
+    container_name: kpvProject_db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 2711
+      POSTGRES_DB: kpvProject_db
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/18/data
+
+volumes:
+  postgres_data:
